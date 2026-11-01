@@ -1,4 +1,4 @@
-package com.ejemplo.personas.controller;
+package com.ejemplo.gimnasio.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

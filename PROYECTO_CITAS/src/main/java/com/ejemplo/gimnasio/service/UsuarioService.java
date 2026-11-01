@@ -20,7 +20,7 @@ public class UsuarioService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    // LISTAR USUARIOS (Modificado para soportar búsqueda opcional por 'q')
+    // LISTAR USUARIOS
     public List<Usuario> listar(String q){
         if (q != null && !q.isBlank()) {
             return repo.findByNombreContainingIgnoreCaseOrUsernameContainingIgnoreCase(q, q);

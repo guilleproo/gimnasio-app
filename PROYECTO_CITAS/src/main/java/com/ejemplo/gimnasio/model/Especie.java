@@ -1,6 +1,6 @@
 
 
-package com.ejemplo.personas.model;
+package com.ejemplo.gimnasio.model;
 
 public enum Especie {
     PERRO("Perro"),

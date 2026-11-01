@@ -1,0 +1,58 @@
+HTML
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nueva Clase</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-4" style="max-width: 600px;">
+    <h4>Registrar Nueva Clase</h4>
+
+    <div th:if="${error}" class="alert alert-danger" th:text="${error}"></div>
+
+    <form th:object="${clase}" method="post" th:action="@{/clases/guardar}">
+
+        <!-- Tipo de Clase: Crossfit, Yoga, Zumba -->
+        <div class="mb-3">
+            <label class="form-label">Tipo de Clase</label>
+            <select th:field="*{tipo}" class="form-select" th:classappend="${#fields.hasErrors('tipo')} ? 'is-invalid'">
+                <option value="">Seleccione un tipo...</option>
+                <option th:each="t : ${tiposClases}" th:value="${t}" th:text="${t}"></option>
+            </select>
+            <div class="invalid-feedback" th:errors="*{tipo}"></div>
+        </div>
+
+        <!-- Entrenador Asignado -->
+        <div class="mb-3">
+            <label class="form-label">Entrenador Encargado</label>
+            <select th:field="*{entrenador.id}" class="form-select" th:classappend="${#fields.hasErrors('entrenador')} ? 'is-invalid'">
+                <option value="">Seleccione un entrenador...</option>
+                <option th:each="e : ${entrenadores}" th:value="${e.id}" th:text="${e.nombre}"></option>
+            </select>
+            <div class="invalid-feedback" th:errors="*{entrenador}"></div>
+        </div>
+
+        <!-- Fecha y Hora de Inicio -->
+        <div class="mb-3">
+            <label class="form-label">Fecha y Hora de Inicio</label>
+            <input type="datetime-local" th:field="*{fechaHoraInicio}" class="form-control"
+                   th:classappend="${#fields.hasErrors('fechaHoraInicio')} ? 'is-invalid'">
+            <div class="invalid-feedback" th:errors="*{fechaHoraInicio}"></div>
+            <div class="form-text">La clase tendrá una duración fija de 1 hora automáticamente.</div>
+        </div>
+
+        <!-- Cupo Máximo Fijo (5 personas) -->
+        <div class="mb-3">
+            <label class="form-label">Cupo Máximo</label>
+            <input type="number" th:field="*{cupoMaximo}" class="form-control" readonly>
+            <div class="form-text">El cupo estricto por clase es de 5 personas.</div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Clase</button>
+        <a th:href="@{/clases}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+</body>
+</html>

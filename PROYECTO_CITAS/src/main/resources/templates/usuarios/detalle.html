@@ -25,15 +25,15 @@
                 </li>
                 <li class="list-group-item">
                     <b>Rol:</b> 
-                    <span class="badge" th:classappend="${usuario.rol =='ADMIN'} ? 'bg-danger' : 'bg-secondary'"
+                    <span class="badge" th:classappend="${usuario.rol == 'ENTRENADOR'} ? 'bg-danger' : 'bg-primary'"
                           th:text="${usuario.rol}"></span>
                 </li>
             </ul>
 
             <div class="d-flex justify-content-between">
                 <a th:href="@{/usuarios}" class="btn btn-secondary">Volver a la lista</a>
-                <!-- El botón Editar solo aparece para ADMIN (Punto 3 del Ejercicio 5) -->
-                <a sec:authorize="hasRole('ADMIN')" th:href="@{/usuarios/{id}/editar(id=${usuario.id})}" class="btn btn-warning">Editar</a>
+                <!-- El boton Editar solo aparece para ENTRENADOR -->
+                <a sec:authorize="hasRole('ENTRENADOR')" th:href="@{/usuarios/{id}/editar(id=${usuario.id})}" class="btn btn-warning">Editar</a>
             </div>
         </div>
     </div>
