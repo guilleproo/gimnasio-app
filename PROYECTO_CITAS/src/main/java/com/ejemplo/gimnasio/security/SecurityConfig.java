@@ -1,4 +1,4 @@
-package com.ejemplo.personas.security;
+package com.ejemplo.gimnasio.security;
 
 import java.util.concurrent.ExecutionException;
 
@@ -31,8 +31,8 @@ public class SecurityConfig {
 
         http
             .authorizeHttpRequests(auth -> auth 
-                .requestMatchers("/login", "/h2-console/**").permitAll()
-                .requestMatchers("/usuarios/nuevo", "/usuarios/guardar", "/usuarios/*/editar", "/usuarios/*/actualizar", "/usuarios/*/eliminar").hasRole("ADMIN")
+                .requestMatchers("/login", "/h2-console/**", "/css/**", "/js/**").permitAll()
+                .requestMatchers("/usuarios/nuevo", "/usuarios/guardar", "/usuarios/*/editar", "/usuarios/*/actualizar", "/usuarios/*/eliminar").hasRole("ENTRENADOR")
                 .requestMatchers("/usuarios", "/usuarios/**").authenticated()
                 .anyRequest().authenticated() 
             )

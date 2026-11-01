@@ -15,8 +15,8 @@ public class DataInitializer {
         return args -> {
             if (repo.count() == 0 ){
                 // Agrego el campo de telefono
-                service.crear(new Usuario("Administrador", "admin", "admin@admin.com", "admin123", "ADMIN", "88888888"));
-                service.crear(new Usuario("Maria", "maria", "maria@ejemplo.com", "maria123", "USER", "77777777"));
+                service.crear(new Usuario("Guillermo Entrenador", "guille", "guillepro@gimnasio.com", "admin123", "ENTRENADOR", "88888888"));
+                service.crear(new Usuario("Maria Cliente", "maria", "maria1@gimnasio.com", "maria123", "CLIENTE", "77777777"));
             }
         };
     }
