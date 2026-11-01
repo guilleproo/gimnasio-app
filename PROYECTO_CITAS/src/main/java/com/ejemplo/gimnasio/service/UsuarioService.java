@@ -82,6 +82,27 @@ public class UsuarioService {
         return repo.save(existente);
     }
 
+    // RECUPERAR PASSWORD POR USERNAME Y TELÉFONO
+    @Transactional
+    public void recuperarPassword(String username, String telefono, String nuevaPassword) {
+        // Buscamos al usuario por su username
+        Usuario usuario = repo.findByUsername(username)
+                .orElseThrow(() -> new IllegalArgumentException("El usuario no existe."));
+
+        // Validar telefonos
+        if (usuario.getTelefono() == null || !usuario.getTelefono().equals(telefono)) {
+            throw new IllegalArgumentException("El teléfono no coincide con el registrado para este usuario.");
+        }
+
+        if (nuevaPassword == null || nuevaPassword.isBlank()) {
+            throw new IllegalArgumentException("La nueva contraseña no puede estar vacía.");
+        }
+
+        // Encriptar password
+        usuario.setPassword(passwordEncoder.encode(nuevaPassword));
+        repo.save(usuario);
+    }
+
     // ELIMINAR 
     @Transactional 
     public void eliminar(Long id){

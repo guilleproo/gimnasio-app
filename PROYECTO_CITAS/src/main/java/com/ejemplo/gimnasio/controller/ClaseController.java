@@ -30,7 +30,7 @@ public class ClaseController {
     public String listarClases(Model model) {
         List<Clase> clases = claseService.listarTodas();
         model.addAttribute("clases", clases);
-        return "gimnasio/clases/lista";
+        return "clases/lista";
     }
 
     // 2. Formulario para crear una nueva clase
@@ -52,7 +52,7 @@ public class ClaseController {
         // Lista fija de tipos de clases permitidos
         model.addAttribute("tiposClases", List.of("Crossfit", "Yoga", "Zumba"));
         
-        return "gimnasio/clases/formulario";
+        return "clases/formulario";
     }
 
     // 3. Guardar la nueva clase
@@ -70,7 +70,7 @@ public class ClaseController {
             model.addAttribute("entrenadores", entrenadores);
             model.addAttribute("tiposClases", List.of("Crossfit", "Yoga", "Zumba"));
             
-            return "gimnasio/clases/formulario";
+            return "clases/formulario";
         }
 
         try {
@@ -85,7 +85,7 @@ public class ClaseController {
             model.addAttribute("entrenadores", entrenadores);
             model.addAttribute("tiposClases", List.of("Crossfit", "Yoga", "Zumba"));
             
-            return "gimnasio/clases/formulario";
+            return "clases/formulario";
         }
 
         return "redirect:/clases?mensaje=Clase creada con exito";
