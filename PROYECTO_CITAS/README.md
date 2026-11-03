@@ -1,4 +1,4 @@
-# Sistema de Gestion de Usuarios - QUIZ #1
+# Sistema de Gestion de Usuarios - PROYECTO GIMNASIO
 
 ## Estudiante
 Nombre: Guillermo Corrales Giammattei
